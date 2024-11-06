@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Product list with cart</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="min-h-screen bg-customrose-100">
+    <main
+      class="mx-auto my-20 grid max-w-[1250px] gap-4 border-2 border-green px-[20px] py-[20px] lg:grid-cols-[1fr_300px]"
+    >
+      <div>
+        <h1 class="pb-5 text-4xl font-bold">Desserts</h1>
+        <div
+          class="grid w-full grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] gap-[1.5rem] [&>figure>div:nth-child(1)]:w-full [&>figure>div:nth-child(1)]:shadow-[0_0_3rem_rgba(0_0_0_1)] [&>figure>div:nth-child(1)]:transition-colors [&>figure>div:nth-child(1)]:duration-500 [&_*_picture>img]:block [&_*_picture>img]:w-full [&_*_picture>img]:rounded-md [&_*_picture>img]:object-cover"
+        >
+          <figure>
+            <div
+              class="relative rounded-md border-2 [&:has(.card2)]:border-red"
+            >
+              <picture class="img">
+                <source
+                  media="(max-width: 768px)"
+                  srcset="../assets/images/image-waffle-mobile.jpg"
+                />
+                <source
+                  media="(max-width: 900px)"
+                  srcset="../assets/images/image-waffle-tablet.jpg"
+                />
+                <img 
+                  src="../assets/images/image-waffle-desktop.jpg"
+                  alt="Waffle"
+                  class="cart-img"
+                />
+              </picture>
+              <div
+                id="Btn-parent"
+                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 px-7 py-2 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
+              >
+                <div  id="Btn-child1" class="flex items-center justify-center gap-2">
+                  <img
+                    src="../assets/images/icon-add-to-cart.svg"
+                    alt="icon-add-to-cart"
+                    class=""
+                  />
+                  <button class="text-xl">Add to Cart</button>
+                </div>
+
+                <div
+                  id="Btn-child2"
+                  class="h-full w-full items-center justify-center gap-9 [&:not(.card2)]:hidden"
+                >
+                  <button
+                    class="btn group relative rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                  >
+                    <svg
+                      class="h-4 w-4 group-hover:stroke-red"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="10"
+                      height="2"
+                      fill="none"
+                      viewBox="0 0 10 2"
+                    >
+                      <path fill="#fff" d="M0 .375h10v1.25H0V.375Z" />
+                    </svg>
+                  </button>
+
+                  <p id="count-quantity" name="number1" class="text-xl text-customrose-50"></p>
+                  <button
+                    class="btn group rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                    name="increment"
+                  >
+                    <svg
+                      class="h-4 w-4 group-hover:stroke-red"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="10"
+                      height="10"
+                      fill="none"
+                      viewBox="0 0 10 10"
+                    >
+                      <path
+                        fill="#fff"
+                        d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="-z-10 flex flex-col gap-2 pt-8">
+              <p class="text-customrose-500">Waffle</p>
+              <h2 id="product-name" class="text-xl font-bold text-customrose-900">
+                Waffle with Berrie
+              </h2>
+              <p id="product-price" class="text-xl font-semibold text-red">$6.50</p>
+            </div>
+          </figure>
+
+          <figure>
+            <div
+              class="relative rounded-md border-2 shadow-[20px_20px_30px_rgba(0_0_0_1)] [&:has(.card2)]:border-red"
+            >
+              <picture>
+                <source
+                  media="(max-width: 768px)"
+                  srcset="../assets/images/image-creme-brulee-mobile.jpg"
+                />
+                <source
+                  media="(max-width: 900px)"
+                  srcset="../assets/images/image-creme-brulee-tablet.jpg"
+                />
+                <img
+                  src="../assets/images/image-creme-brulee-desktop.jpg"
+                  alt="Waffle"
+                />
+              </picture>
+              <div
+                id="Btn-parent"
+                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 px-7 py-2 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
+              >
+                <div id="Btn-child1" class="flex items-center justify-center gap-2">
+                  <img
+                    src="../assets/images/icon-add-to-cart.svg"
+                    alt="icon-add-to-cart"
+                    class=""
+                  />
+                  <button class="text-xl">Add to Cart</button>
+                </div>
+
+                <div
+                  id="Btn-child2"
+                  class="h-full w-full items-center justify-center gap-9 [&:not(.card2)]:hidden"
+                >
+                  <button
+                    class="btn group relative rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                  >
+                    <svg
+                      class="h-4 w-4 group-hover:stroke-red"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="10"
+                      height="2"
+                      fill="none"
+                      viewBox="0 0 10 2"
+                    >
+                      <path fill="#fff" d="M0 .375h10v1.25H0V.375Z" />
+                    </svg>
+                  </button>
+
+                  <p id="count-quantity" class="text-xl text-customrose-50"></p>
+                  <button
+                    class="btn group rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                    name="increment"
+                  >
+                    <svg
+                      class="h-4 w-4 group-hover:stroke-red"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="10"
+                      height="10"
+                      fill="none"
+                      viewBox="0 0 10 10"
+                    >
+                      <path
+                        fill="#fff"
+                        d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="-z-10 flex flex-col gap-2 pt-8">
+              <p class="text-customrose-500">Crème Brûlée</p>
+              <h2 id="product-name" class="text-xl font-bold text-customrose-900">
+                Vanilla Bean Crème Brûlée
+              </h2>
+              <p id="product-price" class="text-xl font-semibold text-red">$7.00</p>
+            </div>
+          </figure>
+
+          <figure>
+            <div
+              class="relative rounded-md border-2 shadow-[20px_20px_30px_rgba(0_0_0_1)] [&:has(.card2)]:border-red"
+            >
+              <picture>
+                <source
+                  media="(max-width: 768px)"
+                  srcset="../assets/images/image-macaron-mobile.jpg"
+                />
+                <source
+                  media="(max-width: 900px)"
+                  srcset="../assets/images/image-macaron-tablet.jpg"
+                />
+                <img
+                  src="../assets/images/image-macaron-desktop.jpg"
+                  alt="Waffle"
+                />
+              </picture>
+              <div
+                id="Btn-parent"
+                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 px-7 py-2 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
+              >
+                <div id="Btn-child1" class="flex items-center justify-center gap-2">
+                  <img
+                    src="../assets/images/icon-add-to-cart.svg"
+                    alt="icon-add-to-cart"
+                    class=""
+                  />
+                  <button class="text-xl">Add to Cart</button>
+                </div>
+
+                <div
+                  id="Btn-child2"
+                  class="h-full w-full items-center justify-center gap-9 [&:not(.card2)]:hidden"
+                >
+                  <button
+                    class="btn group relative rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                  >
+                    <svg
+                      class="h-4 w-4 group-hover:stroke-red"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="10"
+                      height="2"
+                      fill="none"
+                      viewBox="0 0 10 2"
+                    >
+                      <path fill="#fff" d="M0 .375h10v1.25H0V.375Z" />
+                    </svg>
+                  </button>
+
+                  <p id="count-quantity" class="text-xl text-customrose-50"></p>
+                  <button
+                    class="btn group rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                    name="increment"
+                  >
+                    <svg
+                      class="h-4 w-4 group-hover:stroke-red"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="10"
+                      height="10"
+                      fill="none"
+                      viewBox="0 0 10 10"
+                    >
+                      <path
+                        fill="#fff"
+                        d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="-z-10 flex flex-col gap-2 pt-8">
+              <p class="text-customrose-500">Macaron</p>
+              <h2 class="text-xl font-bold text-customrose-900">
+                Macaron Mix of Five
+              </h2>
+              <p class="text-xl font-semibold text-red">$8.00</p>
+            </div>
+          </figure>
+
+          <figure>
+            <div
+              class="relative rounded-md border-2 shadow-[20px_20px_30px_rgba(0_0_0_1)] [&:has(.card2)]:border-red"
+            >
+              <picture>
+                <source
+                  media="(max-width: 768px)"
+                  srcset="../assets/images/image-tiramisu-mobile.jpg"
+                />
+                <source
+                  media="(max-width: 900px)"
+                  srcset="../assets/images/image-tiramisu-tablet.jpg"
+                />
+                <img
+                  src="../assets/images/image-tiramisu-desktop.jpg"
+                  alt="Waffle"
+                />
+              </picture>
+              <div
+                id="Btn-parent"
+                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 px-7 py-2 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
+              >
+                <div   id="Btn-child1" class="flex items-center justify-center gap-2">
+                  <img
+                    src="../assets/images/icon-add-to-cart.svg"
+                    alt="icon-add-to-cart"
+                    class=""
+                  />
+                  <button class="text-xl">Add to Cart</button>
+                </div>
+
+                <div
+                  id="Btn-child2"
+                  class="h-full w-full items-center justify-center gap-9 [&:not(.card2)]:hidden"
+                >
+                  <button
+                    class="btn group relative rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                  >
+                    <svg
+                      class="h-4 w-4 group-hover:stroke-red"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="10"
+                      height="2"
+                      fill="none"
+                      viewBox="0 0 10 2"
+                    >
+                      <path fill="#fff" d="M0 .375h10v1.25H0V.375Z" />
+                    </svg>
+                  </button>
+
+                  <p id="count-quantity" class="text-xl text-customrose-50"></p>
+                  <button
+                    class="btn group rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                    name="increment"
+                  >
+                    <svg
+                      class="h-4 w-4 group-hover:stroke-red"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="10"
+                      height="10"
+                      fill="none"
+                      viewBox="0 0 10 10"
+                    >
+                      <path
+                        fill="#fff"
+                        d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="-z-10 flex flex-col gap-2 pt-8">
+              <p class="text-customrose-500">Tiramisu</p>
+              <h2 class="text-xl font-bold text-customrose-900">
+                Classic Tiramisu
+              </h2>
+              <p class="text-xl font-semibold text-red">$5.50</p>
+            </div>
+          </figure>
+
+          <figure>
+            <div
+              class="relative rounded-md border-2 shadow-[20px_20px_30px_rgba(0_0_0_1)] [&:has(.card2)]:border-red"
+            >
+              <picture>
+                <source
+                  media="(max-width: 768px)"
+                  srcset="../assets/images/image-baklava-mobile.jpg"
+                />
+                <source
+                  media="(max-width: 900px)"
+                  srcset="../assets/images/image-baklava-tablet.jpg"
+                />
+                <img
+                  src="../assets/images/image-baklava-desktop.jpg"
+                  alt="Waffle"
+                />
+              </picture>
+              <div
+                id="Btn-parent"
+                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 px-7 py-2 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
+              >
+                <div   id="Btn-child1" class="flex items-center justify-center gap-2">
+                  <img
+                    src="../assets/images/icon-add-to-cart.svg"
+                    alt="icon-add-to-cart"
+                    class=""
+                  />
+                  <button class="text-xl">Add to Cart</button>
+                </div>
+
+                <div
+                  id="Btn-child2"
+                  class="h-full w-full items-center justify-center gap-9 [&:not(.card2)]:hidden"
+                >
+                  <button
+                    class="btn group relative rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                  >
+                    <svg
+                      class="h-4 w-4 group-hover:stroke-red"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="10"
+                      height="2"
+                      fill="none"
+                      viewBox="0 0 10 2"
+                    >
+                      <path fill="#fff" d="M0 .375h10v1.25H0V.375Z" />
+                    </svg>
+                  </button>
+
+                  <p id="count-quantity" class="text-xl text-customrose-50"></p>
+                  <button
+                    class="btn group rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                    name="increment"
+                  >
+                    <svg
+                      class="h-4 w-4 group-hover:stroke-red"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="10"
+                      height="10"
+                      fill="none"
+                      viewBox="0 0 10 10"
+                    >
+                      <path
+                        fill="#fff"
+                        d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="-z-10 flex flex-col gap-2 pt-8">
+              <p class="text-customrose-500">Baklava</p>
+              <h2 class="text-xl font-bold text-customrose-900">
+                Pistachio Baklava
+              </h2>
+              <p class="text-xl font-semibold text-red">$4.00</p>
+            </div>
+          </figure>
+
+          <figure>
+            <div
+              class="relative rounded-md border-2 [&:has(.card2)]:border-red"
+            >
+              <picture>
+                <source
+                  media="(max-width: 768px)"
+                  srcset="../assets/images/image-meringue-mobile.jpg"
+                />
+                <source
+                  media="(max-width: 900px)"
+                  srcset="../assets/images/image-meringue-tablet.jpg"
+                />
+                <img
+                  src="../assets/images/image-meringue-desktop.jpg"
+                  alt="Waffle"
+                />
+              </picture>
+              <div
+                id="Btn-parent"
+                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 px-7 py-2 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
+              >
+                <div  id="Btn-child1" class="flex items-center justify-center gap-2">
+                  <img
+                    src="../assets/images/icon-add-to-cart.svg"
+                    alt="icon-add-to-cart"
+                    class=""
+                  />
+                  <button class="text-xl">Add to Cart</button>
+                </div>
+
+                <div
+                  id="Btn-child2"
+                  class="h-full w-full items-center justify-center gap-9 [&:not(.card2)]:hidden"
+                >
+                  <button
+                    class="btn group relative rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                  >
+                    <svg
+                      class="h-4 w-4 group-hover:stroke-red"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="10"
+                      height="2"
+                      fill="none"
+                      viewBox="0 0 10 2"
+                    >
+                      <path fill="#fff" d="M0 .375h10v1.25H0V.375Z" />
+                    </svg>
+                  </button>
+
+                  <p id="count-quantity" class="text-xl text-customrose-50"></p>
+                  <button
+                    class="btn group rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                    name="increment"
+                  >
+                    <svg
+                      class="h-4 w-4 group-hover:stroke-red"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="10"
+                      height="10"
+                      fill="none"
+                      viewBox="0 0 10 10"
+                    >
+                      <path
+                        fill="#fff"
+                        d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="-z-10 flex flex-col gap-2 pt-8">
+              <p class="text-customrose-500">Pie</p>
+              <h2 class="text-xl font-bold text-customrose-900">
+                Lemon Meringue Pie
+              </h2>
+              <p class="text-xl font-semibold text-red">$5.00</p>
+              <div>
+                <button>Add to Cart</button>
+              </div>
+            </div>
+          </figure>
+
+          <figure>
+            <div
+              class="relative rounded-md border-2 shadow-[20px_20px_30px_rgba(0_0_0_1)] [&:has(.card2)]:border-red"
+            >
+              <picture>
+                <source
+                  media="(max-width: 768px)"
+                  srcset="../assets/images/image-cake-mobile.jpg"
+                />
+                <source
+                  media="(max-width: 900px)"
+                  srcset="../assets/images/image-cake-tablet.jpg"
+                />
+                <img
+                  src="../assets/images/image-cake-desktop.jpg"
+                  alt="Waffle"
+                />
+              </picture>
+
+              <div
+                id="Btn-parent"
+                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 px-7 py-2 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
+              >
+                <div   id="Btn-child1" class="flex items-center justify-center gap-2">
+                  <img
+                    src="../assets/images/icon-add-to-cart.svg"
+                    alt="icon-add-to-cart"
+                    class=""
+                  />
+                  <button class="text-xl">Add to Cart</button>
+                </div>
+
+                <div
+                  id="Btn-child2"
+                  class="h-full w-full items-center justify-center gap-9 [&:not(.card2)]:hidden"
+                >
+                  <button
+                    class="btn group relative rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                  >
+                    <svg
+                      class="h-4 w-4 group-hover:stroke-red"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="10"
+                      height="2"
+                      fill="none"
+                      viewBox="0 0 10 2"
+                    >
+                      <path fill="#fff" d="M0 .375h10v1.25H0V.375Z" />
+                    </svg>
+                  </button>
+
+                  <p id="count-quantity" class="text-xl text-customrose-50"></p>
+                  <button
+                    class="btn group rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                    name="increment"
+                  >
+                    <svg
+                      class="h-4 w-4 group-hover:stroke-red"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="10"
+                      height="10"
+                      fill="none"
+                      viewBox="0 0 10 10"
+                    >
+                      <path
+                        fill="#fff"
+                        d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="-z-10 flex flex-col gap-2 pt-8">
+              <p class="text-customrose-500">Cake</p>
+              <h2 class="text-xl font-bold text-customrose-900">
+                Red Velvet Cake
+              </h2>
+              <p class="text-xl font-semibold text-red">$4.50</p>
+            </div>
+          </figure>
+
+          <figure>
+            <div 
+              class="relative rounded-md [&:has(.card2)]:outline-2 shadow-[20px_20px_30px_rgba(0_0_0_1)] [&:has(.card2)]:outline-red"
+            >
+              <picture class="margin-0 p-0">
+                <source
+                  media="(max-width: 768px)"
+                  srcset="../assets/images/image-brownie-mobile.jpg"
+                />
+                <source
+                  media="(max-width: 900px)"
+                  srcset="../assets/images/image-brownie-tablet.jpg"
+                />
+                <img 
+                  src="../assets/images/image-brownie-desktop.jpg"
+                  alt="Waffle"
+                  class="rounded-[10px]"
+                />
+              </picture>
+
+              <div
+                id="Btn-parent"
+                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 px-7 py-2 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
+              >
+                <div  id="Btn-child1" class="flex items-center justify-center gap-2">
+                  <img
+                    src="../assets/images/icon-add-to-cart.svg"
+                    alt="icon-add-to-cart"
+                    class=""
+                  />
+                  <button class="text-xl">Add to Cart</button>
+                </div>
+
+                <div
+                  id="Btn-child2"
+                  class="h-full w-full items-center justify-center gap-9 [&:not(.card2)]:hidden"
+                >
+                  <button
+                    class="btn group relative rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                  >
+                    <svg
+                      class="h-4 w-4 group-hover:stroke-red"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="10"
+                      height="2"
+                      fill="none"
+                      viewBox="0 0 10 2"
+                    >
+                      <path fill="#fff" d="M0 .375h10v1.25H0V.375Z" />
+                    </svg>
+                  </button>
+
+                  <p id="count-quantity" class="text-xl text-customrose-50"></p>
+                  <button
+                    class="btn group rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                    name="increment"
+                  >
+                    <svg
+                      class="h-4 w-4 group-hover:stroke-red"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="10"
+                      height="10"
+                      fill="none"
+                      viewBox="0 0 10 10"
+                    >
+                      <path
+                        fill="#fff"
+                        d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="-z-10 flex flex-col gap-2 pt-8">
+              <p class="text-customrose-500">Brownie</p>
+              <h2 class="text-xl font-bold text-customrose-900">
+                Salted Caramel Brownie
+              </h2>
+              <p class="text-xl font-semibold text-red">$4.50</p>
+              <div>
+                <button>Add to Cart</button>
+              </div>
+            </div>
+          </figure>
+
+          <figure>
+            <div
+              class="relative rounded-md border-2 shadow-[20px_20px_30px_rgba(0_0_0_1)] [&:has(.card2)]:border-red"
+            >
+              <picture>
+                <source
+                  media="(max-width: 768px)"
+                  srcset="../assets/images/image-panna-cotta-mobile.jpg"
+                />
+                <source
+                  media="(max-width: 900px)"
+                  srcset="../assets/images/image-panna-cotta-tablet.jpg"
+                />
+                <img
+                  src="../assets/images/image-panna-cotta-desktop.jpg"
+                  alt="Waffle"
+                  class="rounded-[10px]"
+                />
+              </picture>
+
+              <div
+                id="Btn-parent"
+                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 px-7 py-2 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
+              >
+                <div  id="Btn-child1" class="flex items-center justify-center gap-2">
+                  <img
+                    src="../assets/images/icon-add-to-cart.svg"
+                    alt="icon-add-to-cart"
+                    class=""
+                  />
+                  <button class="text-xl">Add to Cart</button>
+                </div>
+
+                <div
+                  id="Btn-child2"
+                  class="h-full w-full items-center justify-center gap-9 [&:not(.card2)]:hidden"
+                >
+                  <button
+                    class="btn group relative rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                  >
+                    <svg
+                      class="h-4 w-4 group-hover:stroke-red"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="10"
+                      height="2"
+                      fill="none"
+                      viewBox="0 0 10 2"
+                    >
+                      <path fill="#fff" d="M0 .375h10v1.25H0V.375Z" />
+                    </svg>
+                  </button>
+
+                  <p id="count-quantity" class="text-xl text-customrose-50"></p>
+                  <button
+                    class="btn group rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                    name="increment"
+                  >
+                    <svg
+                      class="h-4 w-4 group-hover:stroke-red"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="10"
+                      height="10"
+                      fill="none"
+                      viewBox="0 0 10 10"
+                    >
+                      <path
+                        fill="#fff"
+                        d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="-z-10 flex flex-col gap-2 pt-8">
+              <p class="text-customrose-500">Panna Cotta</p>
+              <h2 class="text-xl font-bold text-customrose-900">
+                Vanilla Panna Cotta
+              </h2>
+              <p class="text-xl font-semibold text-red">$6.50</p>
+            </div>
+          </figure>
+        </div>
+      </div>
+
+      <div class="h-fit min-h-[250px] rounded-[10px] bg-customrose-50 p-5">
+        <p class="text-xl font-bold text-red">Your Cart (<span>0</span>)</p>
+        <div class="mt-16 flex flex-col items-center justify-center">
+          <img
+            src="../assets/images/illustration-empty-cart.svg"
+            alt="illustration-empty-cart"
+            class=""
+          />
+          <p class="text-[14px] font-semibold text-customrose-500">
+            Year added item will appear here
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
