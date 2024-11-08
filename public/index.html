@@ -22,12 +22,11 @@
       <div>
         <h1 class="pb-5 text-4xl font-bold">Desserts</h1>
         <div
-          class="grid w-full grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] gap-[1.5rem] [&>figure>div:nth-child(1)]:w-full [&>figure>div:nth-child(1)]:shadow-[0_0_3rem_rgba(0_0_0_1)] [&>figure>div:nth-child(1)]:transition-colors [&>figure>div:nth-child(1)]:duration-500 [&_*_picture>img]:block [&_*_picture>img]:w-full [&_*_picture>img]:rounded-md [&_*_picture>img]:object-cover"
+          id="product-list"
+          class="grid w-full grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] gap-[1.5rem] [&>figure>div:nth-child(1)]:w-full [&>figure>div:nth-child(1)]:shadow-[0_0_3rem_rgba(0_0_0_1)] [&_*_picture>img]:block [&_*_picture>img]:w-full [&_*_picture>img]:rounded-md [&_*_picture>img]:border-2 [&_*_picture>img]:border-transparent [&_*_picture>img]:object-cover [&_*_picture>img]:transition-colors [&_*_picture>img]:duration-500"
         >
           <figure>
-            <div
-              class="relative rounded-md border-2 [&:has(.card2)]:border-red"
-            >
+            <div class="group relative">
               <picture class="img">
                 <source
                   media="(max-width: 768px)"
@@ -37,17 +36,20 @@
                   media="(max-width: 900px)"
                   srcset="../assets/images/image-waffle-tablet.jpg"
                 />
-                <img 
+                <img
                   src="../assets/images/image-waffle-desktop.jpg"
                   alt="Waffle"
-                  class="cart-img"
+                  class="cart-img rounded-md group-[&:has(.card2)]:border-2 group-[&:has(.card2)]:border-red"
                 />
               </picture>
               <div
                 id="Btn-parent"
-                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 px-7 py-2 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
+                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
               >
-                <div  id="Btn-child1" class="flex items-center justify-center gap-2">
+                <div
+                  id="addToCartBtn"
+                  class="flex items-center justify-center gap-2 px-7 py-2"
+                >
                   <img
                     src="../assets/images/icon-add-to-cart.svg"
                     alt="icon-add-to-cart"
@@ -57,11 +59,12 @@
                 </div>
 
                 <div
-                  id="Btn-child2"
-                  class="h-full w-full items-center justify-center gap-9 [&:not(.card2)]:hidden"
+                  id="quantityBtn"
+                  class="h-full w-full items-center justify-center gap-9 px-7 py-2 [&:not(.card2)]:hidden"
                 >
                   <button
                     class="btn group relative rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                    name="decrement"
                   >
                     <svg
                       class="h-4 w-4 group-hover:stroke-red"
@@ -75,7 +78,11 @@
                     </svg>
                   </button>
 
-                  <p id="count-quantity" name="number1" class="text-xl text-customrose-50"></p>
+                  <p
+                    id="count-quantity"
+                    name="number1"
+                    class="text-xl text-customrose-50"
+                  ></p>
                   <button
                     class="btn group rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
                     name="increment"
@@ -97,19 +104,22 @@
                 </div>
               </div>
             </div>
-            <div class="-z-10 flex flex-col gap-2 pt-8">
+            <div id="content" class="-z-10 flex flex-col gap-2 pt-8">
               <p class="text-customrose-500">Waffle</p>
-              <h2 id="product-name" class="text-xl font-bold text-customrose-900">
+              <h2
+                id="product-name"
+                class="text-xl font-bold text-customrose-900"
+              >
                 Waffle with Berrie
               </h2>
-              <p id="product-price" class="text-xl font-semibold text-red">$6.50</p>
+              <p id="product-price" class="text-xl font-semibold text-red">
+                $6.50
+              </p>
             </div>
           </figure>
 
           <figure>
-            <div
-              class="relative rounded-md border-2 shadow-[20px_20px_30px_rgba(0_0_0_1)] [&:has(.card2)]:border-red"
-            >
+            <div class="group relative shadow-[20px_20px_30px_rgba(0_0_0_1)]">
               <picture>
                 <source
                   media="(max-width: 768px)"
@@ -122,13 +132,17 @@
                 <img
                   src="../assets/images/image-creme-brulee-desktop.jpg"
                   alt="Waffle"
+                  class="cart-img rounded-md group-[&:has(.card2)]:border-2 group-[&:has(.card2)]:border-red"
                 />
               </picture>
               <div
                 id="Btn-parent"
-                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 px-7 py-2 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
+                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
               >
-                <div id="Btn-child1" class="flex items-center justify-center gap-2">
+                <div
+                  id="addToCartBtn"
+                  class="flex items-center justify-center gap-2 px-7 py-2"
+                >
                   <img
                     src="../assets/images/icon-add-to-cart.svg"
                     alt="icon-add-to-cart"
@@ -138,11 +152,12 @@
                 </div>
 
                 <div
-                  id="Btn-child2"
-                  class="h-full w-full items-center justify-center gap-9 [&:not(.card2)]:hidden"
+                  id="quantityBtn"
+                  class="h-full w-full items-center justify-center gap-9 px-7 py-2 [&:not(.card2)]:hidden"
                 >
                   <button
                     class="btn group relative rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                    name="decrement"
                   >
                     <svg
                       class="h-4 w-4 group-hover:stroke-red"
@@ -180,17 +195,20 @@
             </div>
             <div class="-z-10 flex flex-col gap-2 pt-8">
               <p class="text-customrose-500">Crème Brûlée</p>
-              <h2 id="product-name" class="text-xl font-bold text-customrose-900">
+              <h2
+                id="product-name"
+                class="text-xl font-bold text-customrose-900"
+              >
                 Vanilla Bean Crème Brûlée
               </h2>
-              <p id="product-price" class="text-xl font-semibold text-red">$7.00</p>
+              <p id="product-price" class="text-xl font-semibold text-red">
+                $7.00
+              </p>
             </div>
           </figure>
 
           <figure>
-            <div
-              class="relative rounded-md border-2 shadow-[20px_20px_30px_rgba(0_0_0_1)] [&:has(.card2)]:border-red"
-            >
+            <div class="group relative shadow-[20px_20px_30px_rgba(0_0_0_1)]">
               <picture>
                 <source
                   media="(max-width: 768px)"
@@ -203,13 +221,17 @@
                 <img
                   src="../assets/images/image-macaron-desktop.jpg"
                   alt="Waffle"
+                  class="cart-img rounded-md group-[&:has(.card2)]:border-2 group-[&:has(.card2)]:border-red"
                 />
               </picture>
               <div
                 id="Btn-parent"
-                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 px-7 py-2 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
+                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
               >
-                <div id="Btn-child1" class="flex items-center justify-center gap-2">
+                <div
+                  id="addToCartBtn"
+                  class="flex items-center justify-center gap-2 px-7 py-2"
+                >
                   <img
                     src="../assets/images/icon-add-to-cart.svg"
                     alt="icon-add-to-cart"
@@ -219,11 +241,12 @@
                 </div>
 
                 <div
-                  id="Btn-child2"
-                  class="h-full w-full items-center justify-center gap-9 [&:not(.card2)]:hidden"
+                  id="quantityBtn"
+                  class="h-full w-full items-center justify-center gap-9 px-7 py-2 [&:not(.card2)]:hidden"
                 >
                   <button
                     class="btn group relative rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                    name="decrement"
                   >
                     <svg
                       class="h-4 w-4 group-hover:stroke-red"
@@ -261,17 +284,20 @@
             </div>
             <div class="-z-10 flex flex-col gap-2 pt-8">
               <p class="text-customrose-500">Macaron</p>
-              <h2 class="text-xl font-bold text-customrose-900">
+              <h2
+                id="product-name"
+                class="text-xl font-bold text-customrose-900"
+              >
                 Macaron Mix of Five
               </h2>
-              <p class="text-xl font-semibold text-red">$8.00</p>
+              <p id="product-price" class="text-xl font-semibold text-red">
+                $8.00
+              </p>
             </div>
           </figure>
 
           <figure>
-            <div
-              class="relative rounded-md border-2 shadow-[20px_20px_30px_rgba(0_0_0_1)] [&:has(.card2)]:border-red"
-            >
+            <div class="group relative shadow-[20px_20px_30px_rgba(0_0_0_1)]">
               <picture>
                 <source
                   media="(max-width: 768px)"
@@ -284,13 +310,17 @@
                 <img
                   src="../assets/images/image-tiramisu-desktop.jpg"
                   alt="Waffle"
+                  class="cart-img rounded-md group-[&:has(.card2)]:border-[2px] group-[&:has(.card2)]:border-red"
                 />
               </picture>
               <div
                 id="Btn-parent"
-                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 px-7 py-2 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
+                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
               >
-                <div   id="Btn-child1" class="flex items-center justify-center gap-2">
+                <div
+                  id="addToCartBtn"
+                  class="flex items-center justify-center gap-2 px-7 py-2"
+                >
                   <img
                     src="../assets/images/icon-add-to-cart.svg"
                     alt="icon-add-to-cart"
@@ -300,11 +330,12 @@
                 </div>
 
                 <div
-                  id="Btn-child2"
-                  class="h-full w-full items-center justify-center gap-9 [&:not(.card2)]:hidden"
+                  id="quantityBtn"
+                  class="h-full w-full items-center justify-center gap-9 px-7 py-2 [&:not(.card2)]:hidden"
                 >
                   <button
                     class="btn group relative rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                    name="decrement"
                   >
                     <svg
                       class="h-4 w-4 group-hover:stroke-red"
@@ -342,17 +373,20 @@
             </div>
             <div class="-z-10 flex flex-col gap-2 pt-8">
               <p class="text-customrose-500">Tiramisu</p>
-              <h2 class="text-xl font-bold text-customrose-900">
+              <h2
+                id="product-name"
+                class="text-xl font-bold text-customrose-900"
+              >
                 Classic Tiramisu
               </h2>
-              <p class="text-xl font-semibold text-red">$5.50</p>
+              <p id="product-price" class="text-xl font-semibold text-red">
+                $5.50
+              </p>
             </div>
           </figure>
 
           <figure>
-            <div
-              class="relative rounded-md border-2 shadow-[20px_20px_30px_rgba(0_0_0_1)] [&:has(.card2)]:border-red"
-            >
+            <div class="group relative shadow-[20px_20px_30px_rgba(0_0_0_1)]">
               <picture>
                 <source
                   media="(max-width: 768px)"
@@ -365,13 +399,17 @@
                 <img
                   src="../assets/images/image-baklava-desktop.jpg"
                   alt="Waffle"
+                  class="cart-img rounded-md group-[&:has(.card2)]:border-[2px] group-[&:has(.card2)]:border-red"
                 />
               </picture>
               <div
                 id="Btn-parent"
-                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 px-7 py-2 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
+                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
               >
-                <div   id="Btn-child1" class="flex items-center justify-center gap-2">
+                <div
+                  id="addToCartBtn"
+                  class="flex items-center justify-center gap-2 px-7 py-2"
+                >
                   <img
                     src="../assets/images/icon-add-to-cart.svg"
                     alt="icon-add-to-cart"
@@ -381,11 +419,12 @@
                 </div>
 
                 <div
-                  id="Btn-child2"
-                  class="h-full w-full items-center justify-center gap-9 [&:not(.card2)]:hidden"
+                  id="quantityBtn"
+                  class="h-full w-full items-center justify-center gap-9 px-7 py-2 [&:not(.card2)]:hidden"
                 >
                   <button
                     class="btn group relative rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                    name="decrement"
                   >
                     <svg
                       class="h-4 w-4 group-hover:stroke-red"
@@ -423,17 +462,20 @@
             </div>
             <div class="-z-10 flex flex-col gap-2 pt-8">
               <p class="text-customrose-500">Baklava</p>
-              <h2 class="text-xl font-bold text-customrose-900">
+              <h2
+                id="product-name"
+                class="text-xl font-bold text-customrose-900"
+              >
                 Pistachio Baklava
               </h2>
-              <p class="text-xl font-semibold text-red">$4.00</p>
+              <p id="product-price" class="text-xl font-semibold text-red">
+                $4.00
+              </p>
             </div>
           </figure>
 
           <figure>
-            <div
-              class="relative rounded-md border-2 [&:has(.card2)]:border-red"
-            >
+            <div class="group relative rounded-md border-2">
               <picture>
                 <source
                   media="(max-width: 768px)"
@@ -446,13 +488,17 @@
                 <img
                   src="../assets/images/image-meringue-desktop.jpg"
                   alt="Waffle"
+                  class="cart-img group-[&:has(.card2)]:border-2 group-[&:has(.card2)]:border-red"
                 />
               </picture>
               <div
                 id="Btn-parent"
-                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 px-7 py-2 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
+                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
               >
-                <div  id="Btn-child1" class="flex items-center justify-center gap-2">
+                <div
+                  id="addToCartBtn"
+                  class="flex items-center justify-center gap-2 px-7 py-2"
+                >
                   <img
                     src="../assets/images/icon-add-to-cart.svg"
                     alt="icon-add-to-cart"
@@ -462,11 +508,12 @@
                 </div>
 
                 <div
-                  id="Btn-child2"
-                  class="h-full w-full items-center justify-center gap-9 [&:not(.card2)]:hidden"
+                  id="quantityBtn"
+                  class="h-full w-full items-center justify-center gap-9 px-7 py-2 [&:not(.card2)]:hidden"
                 >
                   <button
                     class="btn group relative rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                    name="decrement"
                   >
                     <svg
                       class="h-4 w-4 group-hover:stroke-red"
@@ -504,10 +551,15 @@
             </div>
             <div class="-z-10 flex flex-col gap-2 pt-8">
               <p class="text-customrose-500">Pie</p>
-              <h2 class="text-xl font-bold text-customrose-900">
+              <h2
+                id="product-name"
+                class="text-xl font-bold text-customrose-900"
+              >
                 Lemon Meringue Pie
               </h2>
-              <p class="text-xl font-semibold text-red">$5.00</p>
+              <p id="product-price" class="text-xl font-semibold text-red">
+                $5.00
+              </p>
               <div>
                 <button>Add to Cart</button>
               </div>
@@ -515,9 +567,7 @@
           </figure>
 
           <figure>
-            <div
-              class="relative rounded-md border-2 shadow-[20px_20px_30px_rgba(0_0_0_1)] [&:has(.card2)]:border-red"
-            >
+            <div class="group relative shadow-[20px_20px_30px_rgba(0_0_0_1)]">
               <picture>
                 <source
                   media="(max-width: 768px)"
@@ -530,14 +580,18 @@
                 <img
                   src="../assets/images/image-cake-desktop.jpg"
                   alt="Waffle"
+                  class="cart-img rounded-md group-[&:has(.card2)]:border-2 group-[&:has(.card2)]:border-red"
                 />
               </picture>
 
               <div
                 id="Btn-parent"
-                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 px-7 py-2 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
+                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
               >
-                <div   id="Btn-child1" class="flex items-center justify-center gap-2">
+                <div
+                  id="addToCartBtn"
+                  class="flex items-center justify-center gap-2 px-7 py-2"
+                >
                   <img
                     src="../assets/images/icon-add-to-cart.svg"
                     alt="icon-add-to-cart"
@@ -547,11 +601,12 @@
                 </div>
 
                 <div
-                  id="Btn-child2"
-                  class="h-full w-full items-center justify-center gap-9 [&:not(.card2)]:hidden"
+                  id="quantityBtn"
+                  class="h-full w-full items-center justify-center gap-9 px-7 py-2 [&:not(.card2)]:hidden"
                 >
                   <button
                     class="btn group relative rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                    name="decrement"
                   >
                     <svg
                       class="h-4 w-4 group-hover:stroke-red"
@@ -589,17 +644,20 @@
             </div>
             <div class="-z-10 flex flex-col gap-2 pt-8">
               <p class="text-customrose-500">Cake</p>
-              <h2 class="text-xl font-bold text-customrose-900">
+              <h2
+                id="product-name"
+                class="text-xl font-bold text-customrose-900"
+              >
                 Red Velvet Cake
               </h2>
-              <p class="text-xl font-semibold text-red">$4.50</p>
+              <p id="product-price" class="text-xl font-semibold text-red">
+                $4.50
+              </p>
             </div>
           </figure>
 
           <figure>
-            <div 
-              class="relative rounded-md [&:has(.card2)]:outline-2 shadow-[20px_20px_30px_rgba(0_0_0_1)] [&:has(.card2)]:outline-red"
-            >
+            <div class="group relative shadow-[20px_20px_30px_rgba(0_0_0_1)]">
               <picture class="margin-0 p-0">
                 <source
                   media="(max-width: 768px)"
@@ -609,18 +667,21 @@
                   media="(max-width: 900px)"
                   srcset="../assets/images/image-brownie-tablet.jpg"
                 />
-                <img 
+                <img
                   src="../assets/images/image-brownie-desktop.jpg"
                   alt="Waffle"
-                  class="rounded-[10px]"
+                  class="cart-img rounded-md group-[&:has(.card2)]:border-2 group-[&:has(.card2)]:border-red"
                 />
               </picture>
 
               <div
                 id="Btn-parent"
-                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 px-7 py-2 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
+                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
               >
-                <div  id="Btn-child1" class="flex items-center justify-center gap-2">
+                <div
+                  id="addToCartBtn"
+                  class="flex items-center justify-center gap-2 px-7 py-2"
+                >
                   <img
                     src="../assets/images/icon-add-to-cart.svg"
                     alt="icon-add-to-cart"
@@ -630,11 +691,12 @@
                 </div>
 
                 <div
-                  id="Btn-child2"
-                  class="h-full w-full items-center justify-center gap-9 [&:not(.card2)]:hidden"
+                  id="quantityBtn"
+                  class="h-full w-full items-center justify-center gap-9 px-7 py-2 [&:not(.card2)]:hidden"
                 >
                   <button
                     class="btn group relative rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                    name="decrement"
                   >
                     <svg
                       class="h-4 w-4 group-hover:stroke-red"
@@ -672,20 +734,20 @@
             </div>
             <div class="-z-10 flex flex-col gap-2 pt-8">
               <p class="text-customrose-500">Brownie</p>
-              <h2 class="text-xl font-bold text-customrose-900">
+              <h2
+                id="product-name"
+                class="text-xl font-bold text-customrose-900"
+              >
                 Salted Caramel Brownie
               </h2>
-              <p class="text-xl font-semibold text-red">$4.50</p>
-              <div>
-                <button>Add to Cart</button>
-              </div>
+              <p id="product-price" class="text-xl font-semibold text-red">
+                $4.50
+              </p>
             </div>
           </figure>
 
           <figure>
-            <div
-              class="relative rounded-md border-2 shadow-[20px_20px_30px_rgba(0_0_0_1)] [&:has(.card2)]:border-red"
-            >
+            <div class="group relative shadow-[20px_20px_30px_rgba(0_0_0_1)]">
               <picture>
                 <source
                   media="(max-width: 768px)"
@@ -698,15 +760,18 @@
                 <img
                   src="../assets/images/image-panna-cotta-desktop.jpg"
                   alt="Waffle"
-                  class="rounded-[10px]"
+                  class="cart-img rounded-md group-[&:has(.card2)]:border-2 group-[&:has(.card2)]:border-red"
                 />
               </picture>
 
               <div
                 id="Btn-parent"
-                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 px-7 py-2 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
+                class="absolute -bottom-5 left-0 right-0 z-10 mx-auto flex w-fit cursor-pointer items-center overflow-hidden rounded-full border-2 border-customrose-300 bg-customrose-50 font-semibold [&:has(.card2)>div:nth-child(1)]:hidden [&:has(.card2)>div:nth-child(2)]:flex [&:has(.card2)]:border-0 [&:has(.card2)]:bg-red"
               >
-                <div  id="Btn-child1" class="flex items-center justify-center gap-2">
+                <div
+                  id="addToCartBtn"
+                  class="flex items-center justify-center gap-2 px-7 py-2"
+                >
                   <img
                     src="../assets/images/icon-add-to-cart.svg"
                     alt="icon-add-to-cart"
@@ -716,11 +781,12 @@
                 </div>
 
                 <div
-                  id="Btn-child2"
-                  class="h-full w-full items-center justify-center gap-9 [&:not(.card2)]:hidden"
+                  id="quantityBtn"
+                  class="h-full w-full items-center justify-center gap-9 px-7 py-2 [&:not(.card2)]:hidden"
                 >
                   <button
                     class="btn group relative rounded-full border-2 border-customrose-50 p-1 hover:bg-customrose-50"
+                    name="decrement"
                   >
                     <svg
                       class="h-4 w-4 group-hover:stroke-red"
@@ -758,10 +824,15 @@
             </div>
             <div class="-z-10 flex flex-col gap-2 pt-8">
               <p class="text-customrose-500">Panna Cotta</p>
-              <h2 class="text-xl font-bold text-customrose-900">
+              <h2
+                id="product-name"
+                class="text-xl font-bold text-customrose-900"
+              >
                 Vanilla Panna Cotta
               </h2>
-              <p class="text-xl font-semibold text-red">$6.50</p>
+              <p id="product-price" class="text-xl font-semibold text-red">
+                $6.50
+              </p>
             </div>
           </figure>
         </div>

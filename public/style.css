@@ -630,6 +630,10 @@ video {
   margin-top: 4rem;
 }
 
+.block {
+  display: block;
+}
+
 .flex {
   display: flex;
 }
@@ -747,6 +751,10 @@ video {
   border-color: hsl(159 69% 38% / var(--tw-border-opacity));
 }
 
+.border-transparent {
+  border-color: transparent;
+}
+
 .bg-customrose-100 {
   --tw-bg-opacity: 1;
   background-color: hsl(13 31% 94% / var(--tw-bg-opacity));
@@ -755,6 +763,11 @@ video {
 .bg-customrose-50 {
   --tw-bg-opacity: 1;
   background-color: hsl(20 50% 98% / var(--tw-bg-opacity));
+}
+
+.object-fill {
+  -o-object-fit: fill;
+     object-fit: fill;
 }
 
 .p-0 {
@@ -854,6 +867,35 @@ video {
   stroke: hsl(14, 86%, 42%);
 }
 
+.group:has(.card2) .group-\[\&\:has\(\.card2\)\]\:border-2 {
+  border-width: 2px;
+}
+
+.group:has(.card2) .group-\[\&\:has\(\.card2\)\]\:border-\[2px\] {
+  border-width: 2px;
+}
+
+.group:has(.card2) .group-\[\&\:has\(\.card2\)\]\:border-\[3px\] {
+  border-width: 3px;
+}
+
+.group:has(.card2) .group-\[\&\:has\(\.card2\)\]\:border {
+  border-width: 1px;
+}
+
+.group:has(.card2) .group-\[\&\:has\(\.card2\)\]\:border-red {
+  --tw-border-opacity: 1;
+  border-color: hsl(14 86% 42% / var(--tw-border-opacity));
+}
+
+.group:has(.card2) .group-\[\&\:has\(\.card2\)\]\:outline-\[3px\] {
+  outline-width: 3px;
+}
+
+.group:has(.card2) .group-\[\&\:has\(\.card2\)\]\:outline-red {
+  outline-color: hsl(14, 86%, 42%);
+}
+
 @media (min-width: 1024px) {
   .lg\:grid-cols-\[1fr_300px\] {
     grid-template-columns: 1fr 300px;
@@ -870,6 +912,10 @@ video {
 
 .\[\&\:has\(\.card2\)\]\:border-0:has(.card2) {
   border-width: 0px;
+}
+
+.\[\&\:has\(\.card2\)\]\:border-2:has(.card2) {
+  border-width: 2px;
 }
 
 .\[\&\:has\(\.card2\)\]\:border-red:has(.card2) {
@@ -894,6 +940,18 @@ video {
   display: none;
 }
 
+.\[\&\:nth-child\(1\)\]\:transition-colors:nth-child(1) {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.\[\&\>figur\:nth-child\(1\)\]\:transition-colors>figur:nth-child(1) {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 .\[\&\>figure\>div\:nth-child\(1\)\]\:w-full>figure>div:nth-child(1) {
   width: 100%;
 }
@@ -914,6 +972,78 @@ video {
   transition-duration: 500ms;
 }
 
+.\[\&\>figure\>div\>img\:nth-child\(1\)\]\:transition-colors>figure>div>img:nth-child(1) {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.\[\&\>figure\>div\>img\:nth-child\(1\)\]\:duration-500>figure>div>img:nth-child(1) {
+  transition-duration: 500ms;
+}
+
+.\[\&\>figure\>div\>img\:nth-child\(1\)\]\:duration-700>figure>div>img:nth-child(1) {
+  transition-duration: 700ms;
+}
+
+.\[\&\>figure\>div\>nth-child\(1\)\]\:duration-700>figure>div>nth-child(1) {
+  transition-duration: 700ms;
+}
+
+.\[\&\>figure\>divnth-child\(1\)\]\:duration-700>figure>divnth-child(1) {
+  transition-duration: 700ms;
+}
+
+.\[\&_\*\:nth-child\(1\)\]\:transition-colors *:nth-child(1) {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.\[\&_\*_\:nth-child\(1\)\]\:transition-colors * :nth-child(1) {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.\[\&_\*_pi\:nth-child\(1\)\]\:transition-colors * pi:nth-child(1) {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.\[\&_\*_pic\:nth-child\(1\)\]\:transition-colors * pic:nth-child(1) {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.\[\&_\*_picture\:nth-child\(1\)\]\:transition-colors * picture:nth-child(1) {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.\[\&_\*_picture\>\]\:transition-colors * picture> {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.\[\&_\*_picture\>\]\:duration-500 * picture> {
+  transition-duration: 500ms;
+}
+
+.\[\&_\*_picture\>img\:nth-child\(1\)\]\:transition-colors * picture>img:nth-child(1) {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.\[\&_\*_picture\>img\:nth-child\(1\)\]\:duration-500 * picture>img:nth-child(1) {
+  transition-duration: 500ms;
+}
+
 .\[\&_\*_picture\>img\]\:block * picture>img {
   display: block;
 }
@@ -926,7 +1056,41 @@ video {
   border-radius: 0.375rem;
 }
 
+.\[\&_\*_picture\>img\]\:border-2 * picture>img {
+  border-width: 2px;
+}
+
+.\[\&_\*_picture\>img\]\:border * picture>img {
+  border-width: 1px;
+}
+
+.\[\&_\*_picture\>img\]\:border-transparent * picture>img {
+  border-color: transparent;
+}
+
 .\[\&_\*_picture\>img\]\:object-cover * picture>img {
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.\[\&_\*_picture\>img\]\:transition-colors * picture>img {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.\[\&_\*_picture\>img\]\:duration-500 * picture>img {
+  transition-duration: 500ms;
+}
+
+.\[\&_\*_picture\]\:transition-colors * picture {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.\[\&_\:nth-child\(1\)\]\:transition-colors :nth-child(1) {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
