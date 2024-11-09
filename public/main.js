@@ -6,6 +6,14 @@
 */
 
 const productList = document.getElementById("product-list");
+const totalQuantity = document.getElementById("totaQuantity");
+const productQuabtity = document.querySelectorAll("#count-quantity")
+const countMap = {};
+let totalCount = 0;
+for (const count of productQuabtity) {
+  count.textContent = totalCount;
+}
+
 
 productList.addEventListener("click", handleClicks);
 
@@ -13,7 +21,6 @@ productList.addEventListener("click", handleClicks);
 function handleClicks(event) {
   const target = event.target;
   const productItem = target.closest("figure"),
-    addToCartBtn = target.closest("#addToCartBtn"),
     addQuantityBtn = productItem.querySelector("#quantityBtn");
 
   handleAddToCartClicks(event);
@@ -33,17 +40,32 @@ function handleAddToCartClicks(event) {
   const productImage = productItem.querySelector(".cart-img");
   const productName = productItem.querySelector("#product-name");
   const productPrice = productItem.querySelector("#product-price");
+  const productQuabtities = productItem.querySelector("#count-quantity");
 
   if (addToCartBtn) {
     addQuantityBtn.classList.add("card2");
-    
   }
 }
+
+
 
 // handle click on add on quantity button
 function handleQuantityClicks(event) {
   event.stopPropagation();
+
+  const productItem = event.target.closest("figure");
+  const productQuabtities = productItem.querySelector("#count-quantity");
   const addQuantityBtn = event.currentTarget;
+  const productIndex = Array.from(productItem.parentNode.children).indexOf(
+    productItem,
+  );
+  console.log(productIndex);
+
+  if (!countMap[productIndex]) {
+    countMap[productIndex] = Number(productQuabtities.textContent);
+    totalCount += countMap[productIndex];
+    calculateTotalCartProduct();
+  }
 
   if (event.type === "mouseleave") {
     addQuantityBtn.classList.remove("card2");
@@ -51,10 +73,32 @@ function handleQuantityClicks(event) {
 
   if (event.type === "click") {
     const currentButton = event.target.closest("button");
-    if (currentButton) {
-      console.log(currentButton.name);
+
+    if (!currentButton) return;
+
+    if (currentButton.name === "increment") {
+      countMap[productIndex]++;
+      productQuabtities.textContent = countMap[productIndex];
+      totalCount += 1;
+
+      calculateTotalCartProduct();
+    } else if (
+      currentButton.name === "decrement" &&
+      countMap[productIndex] > 1
+    ) {
+      countMap[productIndex]--;
+      productQuabtities.textContent = countMap[productIndex];
+      totalCount -= 1;
+
+      calculateTotalCartProduct();
+    } else {
+      alert("you cannot order zero product");
     }
   }
+}
+
+function calculateTotalCartProduct() {
+  totalQuantity.textContent = totalCount;
 }
 
 /**
