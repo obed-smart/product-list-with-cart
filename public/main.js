@@ -143,9 +143,10 @@ function addproductItemToCart(productId) {
   const productCartList = document.getElementById("productCartList");
 
   productCartList.innerHTML = "";
+  let itemIndex = 0;
   for (const cartItem of Object.values(cart)) {
     const productCartItem = `
-    <div
+    <div data-index="item-${(itemIndex += 1)}"
             class="inline-flex w-full items-center justify-between border-b border-b-customrose-100 py-3"
           >
             <div>
@@ -182,16 +183,37 @@ function addproductItemToCart(productId) {
       const cartItemBtn = item.querySelector("#cartItemBtn");
       if (cartItemBtn) {
         cartItemBtn.addEventListener("click", (event) => {
-          item.remove();
-          cart[productId].productQuantity = 0
-          cartItem.productCartTotalPrice = cartItem.productQuantity * cartItem.productPrice;
-          totalProductQuantity()
-          console.log(cart);
-          
+          event.stopPropagation();
+          const cartItemIndex = item.dataset.index;
+          removeQuantity(cartItemIndex, item);
+          console.log(cartItemIndex);
+          if (cartItemIndex) {
+            // delete cart[cartItemIndex]; 
+            item.remove();
+          }
         });
       }
     }
   }
 }
-// addproductItemToCart();
+function removeQuantity(cartItemIndex, item) {
+  const deletedNumber = cartItemIndex.split("-")[1] - 1;
+  const cartItem = Object.values(cart);
 
+  const selectionItem = item.querySelector("h1")
+  
+  
+
+  const deletedItem = cartItem[deletedNumber];
+  const finalQuantity = cartItem.filter(
+    (item) => item.productName.trim() !== selectionItem.textContent.trim(),
+  );
+  console.log(finalQuantity);
+
+  const totalQuantity = finalQuantity.reduce((total, productItem) => {
+    return total + productItem.productQuantity;
+  }, 0);
+  console.log(totalQuantity);
+
+  return (totalQuantities.textContent = totalQuantity);
+}
