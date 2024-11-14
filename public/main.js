@@ -188,4 +188,23 @@ function addproductItemToCart() {
   }
 }
 
+function removeProductCartItem(item) {
+  const cartItemBtn = item.querySelector("#cartItemBtn");
+  const productItemId = item.dataset.id;
 
+  const cartId = Object.keys(cart).find(
+    (keyId) => cart[keyId].id === productItemId,
+  );
+
+  if (!cartItemBtn) return;
+
+  cartItemBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    if (cartId) {
+      item.remove();
+      delete cart[cartId];
+      totalProductQuantity();
+    }
+  });
+}
