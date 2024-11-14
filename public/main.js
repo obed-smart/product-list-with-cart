@@ -29,7 +29,6 @@ function handleClicks(event) {
   if (addToCartBtn) {
     addQuantityBtn.classList.add("card2");
     addToCart(productItem);
-    console.log(cart);
   }
 
   addQuantityBtn.addEventListener("mouseleave", handleQuantityClicks);
@@ -41,27 +40,34 @@ function getProductId(productItem) {
   return Array.from(productItem.parentNode.children).indexOf(productItem);
 }
 
+function productUniqueId() {
+  return `product-${Date.now()}`;
+}
+
 // handle click on add to cart button
 function addToCart(productItem) {
+  const itemId = productUniqueId();
   const productId = getProductId(productItem);
-
-  const productImage = productItem.querySelector(".cart-img");
-  const productName = productItem.querySelector("#product-name");
-  const productPrice = productItem.querySelector("#product-price");
-  const productQuantities = productItem.querySelector("#count-quantity");
+  const productImage = productItem.querySelector(".cart-img").currentSrc;
+  const productName = productItem.querySelector("#product-name").textContent;
+  const productPrice = parseFloat(
+    productItem.querySelector("#product-price").textContent,
+  );
+  const productQuantity = parseFloat(
+    productItem.querySelector("#count-quantity").textContent,
+  );
 
   if (!cart[productId]) {
     cart[productId] = {
-      productImage: productImage.currentSrc,
-      productName: productName.textContent,
-      productPrice: parseFloat(productPrice.textContent),
-      productQuantity: parseFloat(productQuantities.textContent),
-      productCartTotalPrice:
-        parseFloat(productQuantities.textContent) *
-        parseFloat(productPrice.textContent),
+      id: itemId, // Assign unique ID here
+      productImage,
+      productName,
+      productPrice,
+      productQuantity,
+      productCartTotalPrice: productQuantity * productPrice,
     };
     totalProductQuantity();
-    addproductItemToCart(productId);
+    addproductItemToCart();
   }
 }
 
@@ -105,8 +111,6 @@ function incrementQuantity(productId, productQuantities) {
     totalProductQuantity();
     addproductItemToCart(productId);
   }
-
-  console.log(cart);
 }
 
 function decrementQuantity(productId, productQuantities) {
@@ -118,7 +122,6 @@ function decrementQuantity(productId, productQuantities) {
       cartItem.productQuantity * cartItem.productPrice;
     totalProductQuantity();
     addproductItemToCart(productId);
-    console.log(cart);
   }
 }
 
@@ -139,14 +142,14 @@ function totalProductQuantity() {
   return (totalQuantities.textContent = totalQuantity);
 }
 
-function addproductItemToCart(productId) {
+function addproductItemToCart() {
   const productCartList = document.getElementById("productCartList");
 
   productCartList.innerHTML = "";
-  let itemIndex = 0;
+
   for (const cartItem of Object.values(cart)) {
     const productCartItem = `
-    <div data-index="item-${(itemIndex += 1)}"
+    <div data-id="${cartItem.id}"
             class="inline-flex w-full items-center justify-between border-b border-b-customrose-100 py-3"
           >
             <div>
@@ -180,40 +183,9 @@ function addproductItemToCart(productId) {
     const eachItem = productCartList.children;
 
     for (const item of eachItem) {
-      const cartItemBtn = item.querySelector("#cartItemBtn");
-      if (cartItemBtn) {
-        cartItemBtn.addEventListener("click", (event) => {
-          event.stopPropagation();
-          const cartItemIndex = item.dataset.index;
-          removeQuantity(cartItemIndex, item);
-          console.log(cartItemIndex);
-          if (cartItemIndex) {
-            // delete cart[cartItemIndex]; 
-            item.remove();
-          }
-        });
-      }
+      removeProductCartItem(item);
     }
   }
 }
-function removeQuantity(cartItemIndex, item) {
-  const deletedNumber = cartItemIndex.split("-")[1] - 1;
-  const cartItem = Object.values(cart);
 
-  const selectionItem = item.querySelector("h1")
-  
-  
 
-  const deletedItem = cartItem[deletedNumber];
-  const finalQuantity = cartItem.filter(
-    (item) => item.productName.trim() !== selectionItem.textContent.trim(),
-  );
-  console.log(finalQuantity);
-
-  const totalQuantity = finalQuantity.reduce((total, productItem) => {
-    return total + productItem.productQuantity;
-  }, 0);
-  console.log(totalQuantity);
-
-  return (totalQuantities.textContent = totalQuantity);
-}
