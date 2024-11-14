@@ -3,6 +3,8 @@
 const productList = document.getElementById("product-list");
 const totalQuantities = document.getElementById("totaQuantity");
 const productQuantity = document.querySelectorAll("#count-quantity");
+const cartList = document.getElementById("cartList");
+
 const cart = {};
 let totalCount = 1;
 for (const count of productQuantity) {
@@ -68,6 +70,7 @@ function addToCart(productItem) {
     };
     totalProductQuantity();
     addproductItemToCart();
+    cartList.classList.remove("empty");
   }
 }
 
@@ -179,7 +182,7 @@ function addproductItemToCart() {
     `;
 
     productCartList.insertAdjacentHTML("beforeend", productCartItem);
-
+    calTotalprice();
     const eachItem = productCartList.children;
 
     for (const item of eachItem) {
@@ -187,6 +190,8 @@ function addproductItemToCart() {
     }
   }
 }
+
+// function to remove the cartitem delete the the cart object prodect and update the totalproduct quantities
 
 function removeProductCartItem(item) {
   const cartItemBtn = item.querySelector("#cartItemBtn");
@@ -205,6 +210,22 @@ function removeProductCartItem(item) {
       item.remove();
       delete cart[cartId];
       totalProductQuantity();
+      calTotalprice();
+    }
+
+    if (Object.keys(cart).length === 0) {
+      cartList.classList.add("empty");
     }
   });
+}
+
+//calculate the total price and insert it in the html
+function calTotalprice() {
+  const productTotalPrice = document.getElementById("productTotalPrice");
+  const totalprice = Object.keys(cart).reduce((totalprice, eachItem) => {
+    const eachItemprice = cart[eachItem].productCartTotalPrice;
+    return totalprice + eachItemprice;
+  }, 0);
+  const productsPrice = totalprice.toFixed(2);
+  productTotalPrice.textContent = `$${productsPrice}`;
 }

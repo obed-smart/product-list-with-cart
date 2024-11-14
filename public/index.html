@@ -17,7 +17,7 @@
 
   <body class="min-h-screen bg-customrose-100">
     <main
-      class="mx-auto my-20 grid max-w-[1300px] gap-4  px-[20px] py-[20px] lg:grid-cols-[1fr_350px]"
+      class="mx-auto my-20 grid max-w-[1300px] gap-4 px-[20px] py-[20px] lg:grid-cols-[1fr_350px]"
     >
       <div>
         <h1 class="pb-5 text-4xl font-bold">Desserts</h1>
@@ -840,15 +840,15 @@
         </div>
       </div>
 
-      <div
-        class="max-h-[calc(100vh - 500px)] relative h-fit min-h-[250px] overflow-x-hidden rounded-[10px] bg-customrose-50 px-5 pb-5 [scrollbar-width:none]"
+      <div id="cartList"
+        class="max-h-[calc(100vh - 500px)] relative h-fit min-h-[250px] overflow-x-hidden rounded-[10px] bg-customrose-50 px-5 pb-5 [scrollbar-width:none] group empty"
       >
         <div class="w-ful sticky top-0 bg-customrose-50 py-2">
           <p class="mb-1 text-xl font-bold text-red">
             Your Cart (<span id="totaQuantity">0</span>)
           </p>
         </div>
-        <div class="mt-16 hidden flex-col items-center justify-center">
+        <div class="mt-16 group-[:not(.empty)]:hidden group-[.empty]:flex flex-col items-center justify-center">
           <img
             src="../assets/images/illustration-empty-cart.svg"
             alt="illustration-empty-cart"
@@ -858,46 +858,23 @@
             Year added item will appear here
           </p>
         </div>
-        <div id="productCartList" class="">
-          <!-- <div 
-            class="inline-flex w-full  items-center justify-between border-b border-b-customrose-100 py-3"
-          >
-            <div>
-              <h1 class="pb-1 font-medium text-black">Vanilla Panna Cotta</h1>
-              <p>
-                <span class="mr-1 font-semibold text-red">1x</span>
-                <span class="mr-2 text-customrose-400">@ $20</span>
-                <span class="text-customrose-500">$5.00</span>
-              </p>
-            </div>
-            <div class="rounded-full border border-customrose-400 p-1">
-              <svg
-                class="w-3 stroke-customrose-400 cursor-pointer"
-                xmlns="http://www.w3.org/2000/svg"
-                width="10"
-                height="10"
-                fill="none"
-                viewBox="0 0 10 10"
-              >
-                <path
-                  fill="#CAAFA7"
-                  d="M8.375 9.375 5 6 1.625 9.375l-1-1L4 5 .625 1.625l1-1L5 4 8.375.625l1 1L6 5l3.375 3.375-1 1Z"
-                />
-              </svg>
-            </div>
-          </div> -->
+        <div id="productCartList">
+          <!-- all cartItem will be inserted here -->
         </div>
-        <div class=" bottom-0 left-0 w-full pt-5">
+        <div class="bottom-0 group-[.empty]:hidden group-[:not(.empty)]:block   left-0 w-full pt-5">
           <div class="flex items-center justify-between">
             <p class="text-[1.2rem] text-customrose-900">Order Total</p>
             <p class="text-[1.5rem] font-bold text-black">
-              $<span>50.50</span>
+              <span id="productTotalPrice"></span>
             </p>
           </div>
           <div
             class="my-5 flex items-center justify-center gap-2 rounded-md bg-customrose-100 px-1 py-4 text-center"
           >
-            <img src="../assets/images/icon-carbon-neutral.svg" alt="carbon-neutral image"/>
+            <img
+              src="../assets/images/icon-carbon-neutral.svg"
+              alt="carbon-neutral image"
+            />
             <p class="text-[1rem] text-customrose-500">
               This is a
               <span class="font-medium text-customrose-900"
