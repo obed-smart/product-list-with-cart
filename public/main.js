@@ -3,9 +3,13 @@
 const productList = document.getElementById("product-list");
 const totalQuantities = document.getElementById("totaQuantity");
 const productQuantity = document.querySelectorAll("#count-quantity");
+const confirmedBtn = document.getElementById("confirmBtn");
+const shoppedProduct = document.getElementById("shoppedProduct");
+const confirmedProdutBtn = document.getElementById("confirmedProdutBtn");
+
 const cartList = document.getElementById("cartList");
 
-const cart = {};
+let cart = {};
 let totalCount = 1;
 for (const count of productQuantity) {
   count.textContent = totalCount;
@@ -228,10 +232,49 @@ function removeProductCartItem(item, productItem) {
 //calculate the total price and insert it in the html
 function calTotalprice() {
   const productTotalPrice = document.getElementById("productTotalPrice");
+  const confirmedTotalprice = document.getElementById("confirmedTotalprice");
+
   const totalprice = Object.keys(cart).reduce((totalprice, eachItem) => {
     const eachItemprice = cart[eachItem].productCartTotalPrice;
     return totalprice + eachItemprice;
   }, 0);
   const productsPrice = totalprice.toFixed(2);
   productTotalPrice.textContent = `$${productsPrice}`;
+  confirmedTotalprice.textContent = `$${productsPrice}`;
 }
+
+function confirmProduct() {
+  const confirmProductsList = document.getElementById("confirmProduct");
+  for (const cartItem of Object.values(cart)) {
+    const confirmedproduct = `<div class="justify- flex items-center gap-3">
+                <img
+                  src="${cartItem.productImage}"
+                  alt=""
+                  class="w-16 rounded-md object-cover"
+                />
+                <div class="flex w-full items-center justify-between">
+                  <div class="font-medium text-balance gap-4">
+                    <h1 class="text-[1.1rem] pb">${cartItem.productName}</h1>
+                    <p>
+                      <span class="mr-2 text-red">${cartItem.productQuantity}x</span>
+                      <span class="text-customrose-400">@${cartItem.productPrice.toFixed(2)}</span>
+                    </p>
+                  </div>
+                  <p class="text-[1.2rem] font-semibold text-customrose-900">
+                    $${cartItem.productCartTotalPrice.toFixed(2)}
+                  </p>
+                </div>
+              </div>`;
+    confirmProductsList.insertAdjacentHTML("beforeend", confirmedproduct);
+  }
+}
+
+confirmedBtn.addEventListener("click", () => {
+  confirmProduct();
+  shoppedProduct.classList.add("confirmed");
+});
+
+confirmedProdutBtn.addEventListener("click", () => {
+  shoppedProduct.classList.remove("confirmed");
+  location.reload()
+});

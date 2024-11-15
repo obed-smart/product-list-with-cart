@@ -15,7 +15,9 @@
     <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body class="relative min-h-screen  bg-customrose-100">
+  <body
+    class="relative min-h-screen bg-customrose-100 [&_*.confirmed]:overflow-hidden"
+  >
     <main
       class="mx-auto my-20 grid max-w-[1300px] gap-4 px-[20px] py-[20px] lg:grid-cols-[1fr_350px]"
     >
@@ -888,114 +890,43 @@
               delivery
             </p>
           </div>
-          <button
+          <button id="confirmBtn"
             class="w-full rounded-full bg-red py-4 text-xl font-medium text-customrose-50"
           >
             Confirm Order
           </button>
         </div>
       </div>
-      <div
-        class="fixed [&.confirmed]:flex [&:not(.confirmed)]:hidden inset-0 z-10  h-screen items-center justify-center bg-black/40 confirmed"
+      <div id="shoppedProduct"
+        class="fixed inset-0 z-10 h-screen items-center justify-center bg-black/40 [&.confirmed]:flex [&:not(.confirmed)]:hidden"
       >
-        <div class="z-50 relative  [scrollbar-width:none] w-[calc(100%-20px)] max-h-[calc(100vh-50px)] overflow-auto rounded-md bg-customrose-50 p-5 lg:w-[400px]">
+        <div
+          class="relative z-50 max-h-[calc(100vh-50px)] w-[calc(100%-20px)] overflow-auto rounded-md bg-customrose-50 p-5 [scrollbar-width:none] lg:w-[400px]"
+        >
           <div class="sticky">
             <img
               src="../assets/images/icon-order-confirmed.svg"
               alt="order Confirm image"
-              class="w-10 mb-4"
+              class="mb-4 w-10"
             />
-            <p class="text-customrose-900 mb-1 text-4xl font-bold">Order Confirmed</p>
+            <p class="mb-1 text-4xl font-bold text-customrose-900">
+              Order Confirmed
+            </p>
             <p class="text-customrose-400">we hope you enjoy your food!</p>
           </div>
-          <div class="bg-customrose-100 rounded-md mt-5 p-4 gap-6 flex flex-col">
-            <div class="gap-4 flex flex-col">
-             
-             
-              <div class="justify- flex items-center gap-3">
-                <img
-                  src="../assets/images/image-brownie-mobile.jpg"
-                  alt=""
-                  class="w-20 rounded-md object-cover"
-                />
-                <div class="flex w-full items-center justify-between">
-                  <div class="font-medium">
-                    <h1 class="text-[1.1rem] pb">vanilla css</h1>
-                    <p>
-                      <span class="mr-2 text-red">2X</span>
-                      <span class="text-customrose-400">@ $5.50</span>
-                    </p>
-                  </div>
-                  <p class="text-[1.2rem] font-semibold text-customrose-900">
-                    $11.00
-                  </p>
-                </div>
-              </div>
-              <div class="justify- flex items-center gap-3">
-                <img
-                  src="../assets/images/image-brownie-mobile.jpg"
-                  alt=""
-                  class="w-20 rounded-md object-cover"
-                />
-                <div class="flex w-full items-center justify-between">
-                  <div class="font-medium">
-                    <h1 class="text-[1.1rem] pb">vanilla css</h1>
-                    <p>
-                      <span class="mr-2 text-red">2X</span>
-                      <span class="text-customrose-400">@ $5.50</span>
-                    </p>
-                  </div>
-                  <p class="text-[1.2rem] font-semibold text-customrose-900">
-                    $11.00
-                  </p>
-                </div>
-              </div>
-              <div class="justify- flex items-center gap-3">
-                <img
-                  src="../assets/images/image-brownie-mobile.jpg"
-                  alt=""
-                  class="w-20 rounded-md object-cover"
-                />
-                <div class="flex w-full items-center justify-between">
-                  <div class="font-medium">
-                    <h1 class="text-[1.1rem] pb">vanilla css</h1>
-                    <p>
-                      <span class="mr-2 text-red">2X</span>
-                      <span class="text-customrose-400">@ $5.50</span>
-                    </p>
-                  </div>
-                  <p class="text-[1.2rem] font-semibold text-customrose-900">
-                    $11.00
-                  </p>
-                </div>
-              </div>
-              <div class="justify- flex items-center gap-3">
-                <img
-                  src="../assets/images/image-brownie-mobile.jpg"
-                  alt=""
-                  class="w-20 rounded-md object-cover"
-                />
-                <div class="flex w-full items-center justify-between">
-                  <div class="font-medium">
-                    <h1 class="text-[1.1rem] pb">vanilla css</h1>
-                    <p>
-                      <span class="mr-2 text-red">2X</span>
-                      <span class="text-customrose-400">@ $5.50</span>
-                    </p>
-                  </div>
-                  <p class="text-[1.2rem] font-semibold text-customrose-900">
-                    $11.00
-                  </p>
-                </div>
-              </div>
+          <div
+            class="mt-5 flex flex-col gap-6 rounded-md bg-customrose-100 p-4"
+          >
+            <div id="confirmProduct" class="flex flex-col gap-4">
+              <!-- the selected product will appear here -->
             </div>
-           <div class="flex justify-between">
-            <p class="text-customrose-500 text-[1.2rem]">Order Total</p>
-            <p class="font-bold text-2xl">$45.60</p>
-           </div> 
+            <div class="flex justify-between">
+              <p class="text-[1.2rem] text-customrose-500">Order Total</p>
+              <p id="confirmedTotalprice" class="text-2xl font-bold">$45.60</p>
+            </div>
           </div>
           <div class="mt-5">
-            <button
+            <button id="confirmedProdutBtn"
               class="w-full rounded-full bg-red py-2 text-xl font-medium text-customrose-50"
             >
               Start New Order
